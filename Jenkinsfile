@@ -14,7 +14,9 @@ pipeline {
 
                 // To run Maven on a Windows agent, use
                 bat "mvn -Dmaven.test.failure.ignore=true clean package"
-                bat "mvn sonar:sonar"
+                withSonarQubeEnv("sonar1"){
+                    bat "mvn sonar:sonar"
+                }
             }
 
             post {
